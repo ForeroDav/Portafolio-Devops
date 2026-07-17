@@ -8,523 +8,12 @@
     content="Portfolio personal de ForeroDav, Quant en formación DevOps."
   />
   <title>ForeroDav | Quant & DevOps</title>
-
-  <style>
-    :root {
-      --bg: #071116;
-      --bg-secondary: #0b1a21;
-      --card: rgba(15, 38, 48, 0.78);
-      --card-hover: rgba(19, 49, 61, 0.95);
-      --accent: #226177;
-      --accent-light: #3f91ad;
-      --text: #f2f7f9;
-      --text-muted: #9fb4bc;
-      --border: rgba(63, 145, 173, 0.22);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
-      --radius: 20px;
-      --max-width: 1120px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      font-family:
-        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 10%, rgba(34, 97, 119, 0.24), transparent 32%),
-        radial-gradient(circle at 85% 30%, rgba(34, 97, 119, 0.14), transparent 30%),
-        var(--bg);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .container {
-      width: min(90%, var(--max-width));
-      margin-inline: auto;
-    }
-
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      width: 100%;
-      border-bottom: 1px solid transparent;
-      transition: 0.3s ease;
-    }
-
-    .header.scrolled {
-      border-color: var(--border);
-      background: rgba(7, 17, 22, 0.82);
-      backdrop-filter: blur(18px);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 76px;
-    }
-
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-    }
-
-    .logo span {
-      color: var(--accent-light);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      transition: color 0.25s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--text);
-    }
-
-    .menu-button {
-      display: none;
-      border: 0;
-      color: var(--text);
-      background: transparent;
-      cursor: pointer;
-    }
-
-    .menu-button span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      margin: 5px 0;
-      border-radius: 999px;
-      background: currentColor;
-      transition: 0.25s ease;
-    }
-
-    main {
-      overflow: hidden;
-    }
-
-    .hero {
-      position: relative;
-      display: grid;
-      align-items: center;
-      min-height: 100vh;
-      padding: 120px 0 70px;
-    }
-
-    .hero::after {
-      position: absolute;
-      right: -180px;
-      top: 18%;
-      width: 420px;
-      height: 420px;
-      border: 1px solid rgba(63, 145, 173, 0.14);
-      border-radius: 50%;
-      box-shadow:
-        0 0 0 70px rgba(34, 97, 119, 0.04),
-        0 0 0 140px rgba(34, 97, 119, 0.025);
-      content: "";
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 1.25rem;
-      color: var(--accent-light);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-
-    .eyebrow::before {
-      width: 36px;
-      height: 2px;
-      background: var(--accent-light);
-      content: "";
-    }
-
-    h1 {
-      max-width: 900px;
-      font-size: clamp(3.2rem, 9vw, 7.2rem);
-      line-height: 0.95;
-      letter-spacing: -0.075em;
-    }
-
-    h1 span {
-      display: block;
-      color: var(--accent-light);
-    }
-
-    .hero-description {
-      max-width: 650px;
-      margin-top: 1.6rem;
-      color: var(--text-muted);
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0.8rem 1.35rem;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      font-weight: 700;
-      transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-3px);
-    }
-
-    .button-primary {
-      background: var(--accent);
-    }
-
-    .button-primary:hover {
-      background: var(--accent-light);
-      border-color: var(--accent-light);
-    }
-
-    .button-secondary {
-      color: var(--text-muted);
-      border-color: var(--border);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .button-secondary:hover {
-      color: var(--text);
-      border-color: var(--accent-light);
-    }
-
-    section {
-      padding: 105px 0;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      letter-spacing: -0.05em;
-    }
-
-    .section-number {
-      color: var(--accent-light);
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.9rem;
-    }
-
-    .about-card {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 2rem;
-      padding: clamp(1.5rem, 4vw, 3rem);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: linear-gradient(
-        135deg,
-        rgba(34, 97, 119, 0.16),
-        rgba(15, 38, 48, 0.7)
-      );
-      box-shadow: var(--shadow);
-    }
-
-    .about-card h3 {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.2;
-    }
-
-    .about-card p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-    }
-
-    .skills-grid,
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .skill-card,
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-      transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
-    }
-
-    .skill-card:hover,
-    .project-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(63, 145, 173, 0.62);
-      background: var(--card-hover);
-    }
-
-    .skill-card {
-      min-height: 190px;
-      padding: 1.5rem;
-    }
-
-    .skill-index {
-      color: var(--accent-light);
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.8rem;
-    }
-
-    .skill-card h3 {
-      margin-top: 2.8rem;
-      font-size: 1.55rem;
-    }
-
-    .skill-card p {
-      margin-top: 0.35rem;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    .project-card {
-      display: flex;
-      flex-direction: column;
-      min-height: 330px;
-      padding: 1.5rem;
-    }
-
-    .project-placeholder {
-      display: grid;
-      flex: 1;
-      place-items: center;
-      min-height: 170px;
-      margin-bottom: 1.25rem;
-      border: 1px dashed rgba(63, 145, 173, 0.38);
-      border-radius: 14px;
-      color: var(--text-muted);
-      background:
-        linear-gradient(135deg, rgba(34, 97, 119, 0.09), transparent),
-        rgba(255, 255, 255, 0.015);
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.85rem;
-    }
-
-    .project-card h3 {
-      font-size: 1.25rem;
-    }
-
-    .project-card p {
-      margin-top: 0.45rem;
-      color: var(--text-muted);
-      font-size: 0.93rem;
-    }
-
-    .project-status {
-      display: inline-block;
-      width: fit-content;
-      margin-top: 1rem;
-      padding: 0.32rem 0.65rem;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--accent-light);
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    .footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      color: var(--text-muted);
-      font-size: 0.92rem;
-    }
-
-    .github-link {
-      color: var(--text);
-      font-weight: 700;
-      transition: color 0.25s ease;
-    }
-
-    .github-link:hover {
-      color: var(--accent-light);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 900px) {
-      .about-card {
-        grid-template-columns: 1fr;
-      }
-
-      .skills-grid,
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 680px) {
-      .menu-button {
-        display: block;
-        z-index: 1001;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        width: min(78%, 320px);
-        height: 100vh;
-        padding: 2rem;
-        border-left: 1px solid var(--border);
-        background: rgba(7, 17, 22, 0.97);
-        backdrop-filter: blur(20px);
-        transition: right 0.3s ease;
-      }
-
-      .nav-links.open {
-        right: 0;
-      }
-
-      .nav-links a {
-        font-size: 1.15rem;
-      }
-
-      .menu-button.open span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-      }
-
-      .menu-button.open span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .menu-button.open span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
-
-      .hero {
-        min-height: 92vh;
-      }
-
-      .hero::after {
-        display: none;
-      }
-
-      .section-heading {
-        align-items: flex-start;
-      }
-
-      .skills-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-  </style>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -566,23 +55,31 @@
 
   <main>
     <section class="hero" id="inicio">
+      <div class="hero-visual">
+        <div class="tech-ring"></div>
+        <div class="tech-ring"></div>
+        <div class="tech-ring"></div>
+      </div>
       <div class="container">
         <div class="hero-content reveal">
-          <p class="eyebrow">Quant en formación DevOps</p>
+          <div class="eyebrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            Quant en formación DevOps
+          </div>
 
           <h1>
-            Hola, soy
-            <span>ForeroDav.</span>
+            Hola, soy <br/>
+            <span class="highlight">ForeroDav.</span>
           </h1>
 
           <p class="hero-description">
-            Estoy aprendiendo DevOps para construir, automatizar y desplegar
-            soluciones tecnológicas aplicadas a las finanzas cuantitativas.
+            Especializado en finanzas cuantitativas, ahora escalando habilidades en <strong>DevOps</strong> para construir, automatizar y desplegar soluciones tecnológicas de alto rendimiento.
           </p>
 
           <div class="hero-actions">
             <a class="button button-primary" href="#proyectos">
-              Ver proyectos
+              Explorar Proyectos
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
             <a
               class="button button-secondary"
@@ -590,7 +87,8 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              Visitar GitHub
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              Ver GitHub
             </a>
           </div>
         </div>
@@ -600,22 +98,22 @@
     <section id="sobre-mi">
       <div class="container">
         <div class="section-heading reveal">
-          <h2>Sobre mí</h2>
-          <span class="section-number">01</span>
+          <h2><span class="section-number">01.</span> Sobre mí</h2>
         </div>
 
-        <article class="about-card reveal">
-          <h3>
-            Finanzas cuantitativas impulsadas por automatización.
-          </h3>
-
-          <p>
-            Soy Quant y comienzo este bootcamp porque quiero aprender DevOps y
-            aplicarlo en finanzas cuantitativas. Mi objetivo es integrar
-            desarrollo, infraestructura, automatización y despliegue continuo
-            para crear soluciones financieras más confiables, escalables y
-            reproducibles.
-          </p>
+        <article class="about-card glass-card reveal">
+          <div>
+            <h3>Finanzas cuantitativas impulsadas por automatización.</h3>
+          </div>
+          <div>
+            <p>
+              Soy Quant y comienzo este bootcamp porque quiero aprender DevOps y
+              aplicarlo en finanzas cuantitativas. Mi objetivo es integrar
+              desarrollo, infraestructura, automatización y despliegue continuo
+              para crear soluciones financieras más confiables, escalables y
+              reproducibles.
+            </p>
+          </div>
         </article>
       </div>
     </section>
@@ -623,39 +121,43 @@
     <section id="skills">
       <div class="container">
         <div class="section-heading reveal">
-          <h2>Skills que voy a aprender</h2>
-          <span class="section-number">02</span>
+          <h2><span class="section-number">02.</span> Skills en desarrollo</h2>
         </div>
 
         <div class="skills-grid">
-          <article class="skill-card reveal">
-            <span class="skill-index">01 / 05</span>
+          <article class="skill-card glass-card reveal" style="transition-delay: 0.1s;">
+            <div class="skill-icon-bg">🐧</div>
+            <span class="skill-index">01</span>
             <h3>Linux</h3>
-            <p>Terminal, procesos, permisos, redes y administración de sistemas.</p>
+            <p>Dominio de terminal, gestión de procesos, permisos, redes y administración avanzada de sistemas.</p>
           </article>
 
-          <article class="skill-card reveal">
-            <span class="skill-index">02 / 05</span>
+          <article class="skill-card glass-card reveal" style="transition-delay: 0.2s;">
+            <div class="skill-icon-bg">🐳</div>
+            <span class="skill-index">02</span>
             <h3>Docker</h3>
-            <p>Contenedores reproducibles para aplicaciones y servicios.</p>
+            <p>Creación de contenedores ligeros y reproducibles para aislar aplicaciones y microservicios.</p>
           </article>
 
-          <article class="skill-card reveal">
-            <span class="skill-index">03 / 05</span>
+          <article class="skill-card glass-card reveal" style="transition-delay: 0.3s;">
+            <div class="skill-icon-bg">⚡</div>
+            <span class="skill-index">03</span>
             <h3>CI/CD</h3>
-            <p>Automatización de pruebas, integración y despliegues.</p>
+            <p>Pipelines de automatización para pruebas, integración y despliegue continuo sin interrupciones.</p>
           </article>
 
-          <article class="skill-card reveal">
-            <span class="skill-index">04 / 05</span>
+          <article class="skill-card glass-card reveal" style="transition-delay: 0.4s;">
+            <div class="skill-icon-bg">☸️</div>
+            <span class="skill-index">04</span>
             <h3>Kubernetes</h3>
-            <p>Orquestación y escalamiento de aplicaciones contenerizadas.</p>
+            <p>Orquestación, resiliencia y escalamiento dinámico de aplicaciones contenerizadas en clústeres.</p>
           </article>
 
-          <article class="skill-card reveal">
-            <span class="skill-index">05 / 05</span>
+          <article class="skill-card glass-card reveal" style="transition-delay: 0.5s;">
+            <div class="skill-icon-bg">🏗️</div>
+            <span class="skill-index">05</span>
             <h3>Terraform</h3>
-            <p>Infraestructura como código, versionada y automatizada.</p>
+            <p>Definición de Infraestructura como Código (IaC), versionada, auditable y automatizada.</p>
           </article>
         </div>
       </div>
@@ -664,36 +166,47 @@
     <section id="proyectos">
       <div class="container">
         <div class="section-heading reveal">
-          <h2>Proyectos</h2>
-          <span class="section-number">03</span>
+          <h2><span class="section-number">03.</span> Proyectos</h2>
         </div>
 
         <div class="projects-grid">
-          <article class="project-card reveal">
-            <div class="project-placeholder">Próximamente</div>
+          <article class="project-card glass-card reveal" style="transition-delay: 0.1s;">
+            <div class="project-image">
+              <span>PRÓXIMAMENTE</span>
+            </div>
             <h3>Proyecto DevOps 01</h3>
             <p>
-              Espacio reservado para mi primer proyecto del bootcamp.
+              Espacio reservado para mi primer proyecto del bootcamp, enfocado en despliegues básicos e infraestructura esencial.
             </p>
-            <span class="project-status">En preparación</span>
+            <div class="project-footer">
+              <span class="project-status status-prep">En preparación</span>
+            </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-placeholder">Próximamente</div>
-            <h3>Proyecto DevOps 02</h3>
+          <article class="project-card glass-card reveal" style="transition-delay: 0.2s;">
+            <div class="project-image">
+              <span>PRÓXIMAMENTE</span>
+            </div>
+            <h3>Pipeline CI/CD</h3>
             <p>
-              Espacio reservado para una solución con automatización y CI/CD.
+              Espacio reservado para una solución integral de integración y despliegue continuo utilizando herramientas modernas.
             </p>
-            <span class="project-status">En preparación</span>
+            <div class="project-footer">
+              <span class="project-status status-prep">En preparación</span>
+            </div>
           </article>
 
-          <article class="project-card reveal">
-            <div class="project-placeholder">Próximamente</div>
-            <h3>Proyecto Quant + DevOps</h3>
+          <article class="project-card glass-card reveal" style="transition-delay: 0.3s;">
+            <div class="project-image">
+              <span>PRÓXIMAMENTE</span>
+            </div>
+            <h3>Quant + DevOps</h3>
             <p>
-              Espacio reservado para integrar DevOps y finanzas cuantitativas.
+              Integración de modelos financieros cuantitativos con pipelines de datos robustos y despliegue automatizado.
             </p>
-            <span class="project-status">En preparación</span>
+            <div class="project-footer">
+              <span class="project-status status-prep">En preparación</span>
+            </div>
           </article>
         </div>
       </div>
@@ -703,17 +216,14 @@
   <footer class="footer">
     <div class="footer-content container">
       <p>
-        © <span id="currentYear"></span> ForeroDav. Construyendo y aprendiendo.
+        © <span id="currentYear"></span> ForeroDav. Quant & DevOps.
       </p>
 
-      <a
-        class="github-link"
-        href="https://github.com/ForeroDav"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        github.com/ForeroDav
-      </a>
+      <div class="social-links">
+        <a href="https://github.com/ForeroDav" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -725,24 +235,22 @@
     const sections = document.querySelectorAll("main section[id]");
     const revealElements = document.querySelectorAll(".reveal");
 
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
 
+    // Scroll Effects
     window.addEventListener("scroll", () => {
-      header.classList.toggle("scrolled", window.scrollY > 20);
+      header.classList.toggle("scrolled", window.scrollY > 50);
     });
 
+    // Mobile Menu Toggle
     menuButton.addEventListener("click", () => {
       const isOpen = navLinks.classList.toggle("open");
-
       menuButton.classList.toggle("open", isOpen);
       menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute(
-        "aria-label",
-        isOpen ? "Cerrar menú" : "Abrir menú"
-      );
+      menuButton.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
     });
 
+    // Close mobile menu when clicking a link
     navigationLinks.forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("open");
@@ -752,6 +260,7 @@
       });
     });
 
+    // Intersection Observer for scroll animations
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -761,11 +270,12 @@
           }
         });
       },
-      { threshold: 0.14 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
 
     revealElements.forEach((element) => revealObserver.observe(element));
 
+    // Active link highlighting on scroll
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -780,12 +290,27 @@
         });
       },
       {
-        rootMargin: "-45% 0px -45% 0px",
-        threshold: 0
+        rootMargin: "-20% 0px -79% 0px"
       }
     );
 
     sections.forEach((section) => sectionObserver.observe(section));
+    
+    // Parallax effect for hero tech rings
+    document.addEventListener('mousemove', (e) => {
+      const rings = document.querySelectorAll('.tech-ring');
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      rings.forEach((ring, index) => {
+        const speed = (index + 1) * 20;
+        const xOffset = (x - 0.5) * speed;
+        const yOffset = (y - 0.5) * speed;
+        
+        ring.style.marginLeft = `${xOffset}px`;
+        ring.style.marginTop = `${yOffset}px`;
+      });
+    });
   </script>
 </body>
 </html>
